@@ -2,7 +2,22 @@ import fs from "fs";
 // import styles from "./style.module.scss";
 
 export async function generateStaticParams() {
-  return [];
+  const months = fs.readdirSync(`./public/algo`);
+  const params = [];
+  months.forEach((month) => {
+    const days = fs.readdirSync(`./public/algo/${month}`);
+    days.forEach((day) => {
+      const problems = fs.readdirSync(`./public/algo/${month}/${day}`);
+      problems.forEach((problem) => {
+        params.push({
+          month,
+          day,
+          problem: problem.slice(0, -3),
+        });
+      });
+    });
+  });
+  return params;
 }
 
 export default function Problem(props) {

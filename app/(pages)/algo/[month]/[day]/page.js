@@ -2,7 +2,18 @@ import fs from "fs";
 import Link from "next/link";
 
 export async function generateStaticParams() {
-  return [];
+  const months = fs.readdirSync(`./public/algo`);
+  const params = [];
+  months.forEach((month) => {
+    const days = fs.readdirSync(`./public/algo/${month}`);
+    days.forEach((day) => {
+      params.push({
+        month,
+        day,
+      });
+    });
+  });
+  return params;
 }
 
 export default function Day(props) {
