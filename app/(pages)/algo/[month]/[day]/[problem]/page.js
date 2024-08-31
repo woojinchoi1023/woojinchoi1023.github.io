@@ -11,8 +11,10 @@ export async function generateStaticParams() {
       problems.forEach((problem) => {
         params.push({
           month,
-          day: encodeURIComponent(day),
-          problem: encodeURIComponent(problem.slice(0, -3)),
+          // day: encodeURIComponent(day),
+          // problem: encodeURIComponent(problem.slice(0, -3)),
+          day,
+          problem: problem.slice(0, -3),
         });
       });
     });
