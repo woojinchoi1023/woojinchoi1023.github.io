@@ -9,7 +9,7 @@ export async function generateStaticParams() {
     days.forEach((day) => {
       params.push({
         month,
-        day,
+        day: encodeURIComponent(day),
       });
     });
   });

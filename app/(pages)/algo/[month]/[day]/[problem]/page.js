@@ -1,5 +1,5 @@
 import fs from "fs";
-// import styles from "./style.module.scss";
+import styles from "./style.module.scss";
 
 export async function generateStaticParams() {
   const months = fs.readdirSync(`./public/algo`);
@@ -11,8 +11,8 @@ export async function generateStaticParams() {
       problems.forEach((problem) => {
         params.push({
           month,
-          day,
-          problem: problem.slice(0, -3),
+          day: encodeURIComponent(day),
+          problem: encodeURIComponent(problem.slice(0, -3)),
         });
       });
     });
@@ -31,7 +31,7 @@ export default function Problem(props) {
   return (
     <>
       <h2>{problem}</h2>
-      <pre>
+      <pre className={styles.customPre}>
         <code>{code}</code>
       </pre>
     </>
