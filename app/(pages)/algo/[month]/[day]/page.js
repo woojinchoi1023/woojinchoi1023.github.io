@@ -1,5 +1,10 @@
 import fs from "fs";
 import Link from "next/link";
+
+export async function generateStaticParams() {
+  return [];
+}
+
 export default function Day(props) {
   const month = props.params.month;
   const day = decodeURI(props.params.day);

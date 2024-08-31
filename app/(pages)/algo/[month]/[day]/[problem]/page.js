@@ -1,5 +1,10 @@
 import fs from "fs";
 // import styles from "./style.module.scss";
+
+export async function generateStaticParams() {
+  return [];
+}
+
 export default function Problem(props) {
   const { month } = props.params;
   const day = decodeURI(props.params.day);
